@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  health:
+    build: .
+    image: moses-devops:v5
+    volumes:
+      - moses-data:/data
+    networks:
+      - moses-net
+  web:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    networks:
+      - moses-net
+
+volumes:
+  moses-data:
+networks:
+  moses-net:
